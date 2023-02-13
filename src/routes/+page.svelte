@@ -1,2 +1,19 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import {signInWithPopup} from "firebase/auth"
+
+	import {goto} from "$app/navigation"
+
+	import {auth, googleProvider} from "../firebase"
+
+	const signIn = async () => {
+		await signInWithPopup(auth, googleProvider)
+		await goto(`/signed-in`)
+	}
+</script>
+
+<h1>Life</h1>
+<button
+	on:click={() => {
+		signIn().catch(console.error)
+	}}>Sign in</button
+>

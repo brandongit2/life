@@ -1,5 +1,4 @@
 module.exports = {
-	extends: [`eslint:recommended`, `plugin:import/recommended`],
 	plugins: [`import`],
 	parserOptions: {
 		sourceType: `module`,
@@ -14,6 +13,7 @@ module.exports = {
 			exports: true,
 		},
 	},
+	extends: [`eslint:recommended`, `plugin:import/recommended`],
 	rules: {
 		eqeqeq: `warn`,
 		"import/no-anonymous-default-export": `warn`,
@@ -27,13 +27,13 @@ module.exports = {
 					[`object`, `unknown`, `type`],
 					[`internal`, `parent`, `index`, `sibling`],
 				],
-				pathGroups: [{pattern: `~/**`, group: `internal`}],
 				pathGroupsExcludedImportTypes: [`type`],
 				"newlines-between": `always`,
 				alphabetize: {order: `asc`, caseInsensitive: true},
 				warnOnUnassignedImports: true,
 			},
 		],
+		"import/no-unresolved": `off`,
 		"sort-imports": [`warn`, {ignoreDeclarationSort: true}],
 		"no-console": [`warn`, {allow: [`info`, `warn`, `error`]}],
 		"no-constant-condition": [`error`, {checkLoops: false}],
@@ -42,7 +42,7 @@ module.exports = {
 		"no-mixed-spaces-and-tabs": [`warn`, `smart-tabs`],
 		"no-nested-ternary": `warn`,
 		"no-param-reassign": `error`,
-		"no-unused-expressions": [`warn`, {enforceForJSX: true}],
+		"no-unused-expressions": `warn`,
 		"no-unused-vars": [`warn`, {ignoreRestSiblings: true}],
 		"object-shorthand": `warn`,
 		quotes: [`warn`, `backtick`],
@@ -55,12 +55,10 @@ module.exports = {
 			parser: `@typescript-eslint/parser`,
 			parserOptions: {
 				project: `./tsconfig.json`,
+				extraFileExtensions: [`.svelte`],
 			},
 			plugins: [`@typescript-eslint`],
 			settings: {
-				"import/parsers": {
-					"@typescript-eslint/parser": [`.ts`, `.tsx`],
-				},
 				"import/resolver": {
 					typescript: true,
 				},
@@ -93,50 +91,14 @@ module.exports = {
 		},
 		{
 			files: [`**/*.svelte`],
-			parser: `@typescript-eslint/parser`,
+			parser: `svelte-eslint-parser`,
 			parserOptions: {
-				project: `./tsconfig.json`,
-			},
-			plugins: [`svelte3`, `@typescript-eslint`],
-			processor: `svelte3/svelte3`,
-			settings: {
-				"import/parsers": {
-					"@typescript-eslint/parser": [`.ts`, `.tsx`],
-				},
-				"import/resolver": {
-					typescript: true,
-					node: true,
-				},
-				"svelte3/typescript": () => require(`typescript`),
+				parser: `@typescript-eslint/parser`,
 			},
 			env: {
 				browser: true,
 			},
-			extends: [
-				`plugin:@typescript-eslint/recommended`,
-				`plugin:@typescript-eslint/recommended-requiring-type-checking`,
-				`plugin:import/typescript`,
-			],
-			rules: {
-				"@typescript-eslint/ban-ts-comment": [`warn`, {"ts-ignore": `allow-with-description`}],
-				"@typescript-eslint/consistent-type-imports": `warn`,
-				"@typescript-eslint/explicit-module-boundary-types": `warn`,
-				"@typescript-eslint/no-empty-function": `off`,
-				"@typescript-eslint/no-extra-semi": `off`,
-				"@typescript-eslint/no-floating-promises": `warn`,
-				"@typescript-eslint/no-misused-promises": `warn`,
-				"@typescript-eslint/no-non-null-assertion": `off`,
-				"@typescript-eslint/no-unnecessary-condition": `warn`,
-				"@typescript-eslint/no-unnecessary-type-assertion": `warn`,
-				"@typescript-eslint/no-unsafe-assignment": `warn`,
-				"@typescript-eslint/no-unsafe-call": `warn`,
-				"@typescript-eslint/no-unsafe-member-access": `warn`,
-				"@typescript-eslint/no-unsafe-return": `off`,
-				"@typescript-eslint/no-unused-vars": [`warn`, {ignoreRestSiblings: true}],
-				"@typescript-eslint/quotes": [`warn`, `backtick`],
-				"prefer-const": `off`,
-				quotes: `off`,
-			},
+			extends: [`plugin:svelte/recommended`],
 		},
 	],
 }
