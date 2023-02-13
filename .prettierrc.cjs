@@ -1,6 +1,6 @@
 module.exports = {
-	plugins: ["prettier-plugin-tailwindcss", `prettier-plugin-svelte`],
-	pluginSearchDirs: ["."],
+	plugins: [`prettier-plugin-tailwindcss`, `prettier-plugin-svelte`],
+	pluginSearchDirs: [`.`],
 	printWidth: 120,
 	tabWidth: 2,
 	useTabs: true,

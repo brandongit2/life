@@ -1,10 +1,10 @@
+import {browser} from "$app/environment"
 import {redirect} from "@sveltejs/kit"
 import {type User, onAuthStateChanged} from "firebase/auth"
 
-import {browser} from "$app/environment"
 import type {LayoutLoad} from "./$types"
 
-import {auth} from "../../firebase"
+import {auth} from "~/firebase"
 
 export const load: LayoutLoad = async () => {
 	if (!browser) return

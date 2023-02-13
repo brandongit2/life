@@ -3,7 +3,7 @@
 
 	import type {PageData} from "./$types"
 
-	import {auth} from "../../../firebase"
+	import {auth} from "~/firebase"
 
 	export let data: PageData
 </script>

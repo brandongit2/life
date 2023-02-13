@@ -4,7 +4,7 @@
 
 	import {goto} from "$app/navigation"
 
-	import {auth} from "../../firebase"
+	import {auth} from "~/firebase"
 
 	onMount(() =>
 		onAuthStateChanged(auth, (user) => {

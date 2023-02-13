@@ -27,7 +27,10 @@ module.exports = {
 					[`object`, `unknown`, `type`],
 					[`internal`, `parent`, `index`, `sibling`],
 				],
-				pathGroupsExcludedImportTypes: [`type`],
+				pathGroups: [
+					{pattern: `~/**`, group: `internal`},
+					{pattern: `$app/environment`, group: `external`},
+				],
 				"newlines-between": `always`,
 				alphabetize: {order: `asc`, caseInsensitive: true},
 				warnOnUnassignedImports: true,
@@ -51,11 +54,18 @@ module.exports = {
 	},
 	overrides: [
 		{
+			files: [`**/*.cjs`],
+			parserOptions: {
+				sourceType: `commonjs`,
+			},
+		},
+		{
 			files: [`**/*.ts`, `**/*.svelte`],
 			parser: `@typescript-eslint/parser`,
 			parserOptions: {
 				project: `./tsconfig.json`,
 				extraFileExtensions: [`.svelte`],
+				"import/external-module-folders": [`node_modules`, `.svelte-kit`],
 			},
 			plugins: [`@typescript-eslint`],
 			settings: {
