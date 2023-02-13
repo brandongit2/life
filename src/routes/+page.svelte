@@ -7,7 +7,7 @@
 
 	const signIn = async () => {
 		await signInWithPopup(auth, googleProvider)
-		await goto(`/signed-in`)
+		await goto(`/dashboard`)
 	}
 </script>
 

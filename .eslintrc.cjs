@@ -99,6 +99,10 @@ module.exports = {
 				browser: true,
 			},
 			extends: [`plugin:svelte/recommended`],
+			rules: {
+				"@typescript-eslint/consistent-type-imports": `warn`,
+				"svelte/valid-compile": `warn`,
+			},
 		},
 	],
 }
