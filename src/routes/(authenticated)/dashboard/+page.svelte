@@ -1,14 +1,16 @@
 <script lang="ts">
 	import {signOut} from "firebase/auth"
+	import {getContext} from "svelte"
 
-	import type {PageData} from "./$types"
+	import type {User} from "firebase/auth"
+	import type {Readable} from "svelte/store"
 
 	import {auth} from "~/firebase"
 
-	export let data: PageData
+	const user = getContext<Readable<User>>(`user`)
 </script>
 
-<p>You're now signed in as {data.user?.displayName}!</p>
+<p>You're now signed in as {$user.displayName}!</p>
 
 <button
 	type="button"
