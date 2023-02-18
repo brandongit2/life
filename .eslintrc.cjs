@@ -95,6 +95,8 @@ module.exports = {
 				"@typescript-eslint/no-unsafe-return": `off`,
 				"@typescript-eslint/no-unused-vars": [`warn`, {ignoreRestSiblings: true}],
 				"@typescript-eslint/quotes": [`warn`, `backtick`],
+				"@typescript-eslint/require-await": `warn`,
+				"import/default": `off`,
 				"prefer-const": `off`,
 				quotes: `off`,
 			},

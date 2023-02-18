@@ -1,20 +1,14 @@
 <script lang="ts">
-	import {signOut} from "firebase/auth"
-	import {getContext} from "svelte"
-
-	import type {User} from "firebase/auth"
-	import type {Readable} from "svelte/store"
-
-	import {auth} from "~/firebase"
-
-	const user = getContext<Readable<User>>(`user`)
+	import {enhance} from "$app/forms"
 </script>
 
-<p>You're now signed in as {$user.displayName}!</p>
-
-<button
-	type="button"
-	on:click={() => {
-		signOut(auth).catch(console.error)
-	}}>Sign out</button
->
+<div class="px-12 py-8">
+	<h1 class="text-2xl font-semibold">Transactions</h1>
+	<form method="post" use:enhance class="flex flex-col gap-2">
+		<div>
+			<label for="amount">Amount</label>
+			<input type="text" name="amount" id="amount" class="border border-black rounded" />
+		</div>
+		<button class="border border-black rounded px-2 py-1">Submit</button>
+	</form>
+</div>

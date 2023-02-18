@@ -2,6 +2,7 @@
 	import {signInWithPopup} from "firebase/auth"
 
 	import {goto} from "$app/navigation"
+
 	import {auth, googleProvider} from "~/firebase"
 
 	const signIn = async () => {
