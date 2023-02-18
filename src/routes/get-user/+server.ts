@@ -1,7 +1,7 @@
 import {type RequestHandler, json} from "@sveltejs/kit"
 import {z} from "zod"
 
-import {prisma} from "~/prisma"
+import {prisma} from "~/lib/server/prisma"
 
 export const GET: RequestHandler = async ({url}) => {
 	const id = z.string().parse(url.searchParams.get(`id`))

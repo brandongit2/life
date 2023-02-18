@@ -6,9 +6,10 @@
 	import invariant from "tiny-invariant"
 
 	import {goto} from "$app/navigation"
+	import {auth} from "$lib/firebase"
 	import type {User} from "@prisma/client"
 
-	import {auth} from "~/firebase"
+	import {trpc} from "~/lib/trpc"
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	let user = readable(undefined as any as User, (set) => {
@@ -20,19 +21,15 @@
 				invariant(_user.email, `User must have an email`)
 				invariant(_user.displayName, `User must have a display name`)
 				invariant(_user.photoURL, `User must have a photo URL`)
-				fetch(
-					`/get-user?${new URLSearchParams({
+
+				trpc.getUser
+					.query({
 						id: _user.uid,
 						email: _user.email,
 						name: _user.displayName,
 						avatar: _user.photoURL,
-					}).toString()}`,
-					{
-						method: `GET`,
-					},
-				)
-					.then(async (res) => {
-						const data = (await res.json()) as {user: User}
+					})
+					.then((data) => {
 						set(data.user)
 					})
 					.catch(console.error)

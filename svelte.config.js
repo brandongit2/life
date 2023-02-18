@@ -8,6 +8,9 @@ const config = {
 		alias: {
 			"~/*": `./src/*`,
 		},
+		files: {
+			lib: `src/lib`,
+		},
 	},
 	preprocess: vitePreprocess(),
 }
