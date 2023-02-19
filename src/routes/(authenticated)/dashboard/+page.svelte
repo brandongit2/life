@@ -11,4 +11,9 @@
 		</div>
 		<button class="border border-black rounded px-2 py-1">Submit</button>
 	</form>
+	<ul>
+		<!-- {#each transactions as transaction}
+			<li>{transaction.amount}</li>
+		{/each} -->
+	</ul>
 </div>
